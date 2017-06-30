@@ -13,9 +13,11 @@ var getUrlParameter = function getUrlParameter(sParam) {
   }
 };
 
+console.log(document.location);
+
 const chapter = parseInt(getUrlParameter("chapter"), 10);
-const prevButton = `<button class='prevnext' onClick='window.open("/?chapter=${chapter - 1}")'><p>Prev Chapter</p></button>`;
-const nextButton = `<button class='prevnext' onClick='window.open("/?chapter=${chapter + 1}")'><p>Next Chapter</p></button>`;
+const prevButton = `<a href="/?chapter=${chapter - 1}"><p>Prev Chapter</p></a>`;
+const nextButton = `<a href="/?chapter=${chapter + 1}"><p>Next Chapter</p></a>`;
 const chapterDisplay = `<p> Chapter ${chapter} </p>`;
 const control = `<div class='control'>${prevButton + chapterDisplay + nextButton}</div>`;
 
