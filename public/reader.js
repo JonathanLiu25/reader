@@ -23,7 +23,7 @@ if (chapter) {
   $("#main").append("<div class='loading'><p>Loading...</p></div>");
   $.ajax({
     type: "GET",
-    url: `/${chapter}`
+    url: `/chapter/${chapter}`
   })
     .then(content => {
       $(".loading").remove();
@@ -36,7 +36,7 @@ if (chapter) {
 } else {
   $.ajax({
     type: "GET",
-    url: "/where"
+    url: "/chapter/where"
   })
     .then(chapterNum => {
       $("#main").append(`<a href="/?chapter=${chapterNum}"><p>Click to go to Chapter ${chapterNum}</p></a>`);

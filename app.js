@@ -7,11 +7,11 @@ app.use(express.static(resolve(__dirname, "public")));
 
 let latestChapter = 1;
 
-app.get("/where", (req, res, next) => {
+app.get("/chapter/where", (req, res, next) => {
   res.send(String(latestChapter));
 });
 
-app.get("/:chapter", (req, res, next) => {
+app.get("/chapter/:chapter", (req, res, next) => {
   const chapter = req.params.chapter;
   if (chapter > latestChapter) latestChapter = chapter;
   const url = `https://wwyxhqc.wordpress.com/%E4%BF%AE%E7%9C%9F%E4%B8%96%E7%95%8C-world-of-cultivation-chapter-${chapter}/`;
