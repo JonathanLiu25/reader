@@ -20,7 +20,7 @@ app.get("/:chapter", (req, res, next) => {
 });
 
 const port = 3000;
-const server = app.listen(port, () => {
+const server = app.listen(process.env.PORT || port, () => {
   console.log("Listening on port", server.address().port);
 });
 
