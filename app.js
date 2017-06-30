@@ -13,7 +13,7 @@ app.get("/chapter/where", (req, res, next) => {
 
 app.get("/chapter/:chapter", (req, res, next) => {
   const chapter = parseInt(req.params.chapter, 10);
-  if (chapter > latestChapter) latestChapter = chapter;
+  latestChapter = chapter;
   const url = `https://wwyxhqc.wordpress.com/%E4%BF%AE%E7%9C%9F%E4%B8%96%E7%95%8C-world-of-cultivation-chapter-${chapter}/`;
   request(url, (err, response, body) => {
     if (err) {

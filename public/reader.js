@@ -14,8 +14,8 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 const chapter = parseInt(getUrlParameter("chapter"), 10) || null;
-const prevLink = `<a href="/?chapter=${chapter - 1}"><p>Prev Chapter</p></a>`;
-const nextLink = `<a href="/?chapter=${chapter + 1}"><p>Next Chapter</p></a>`;
+const prevLink = `<a href="/?chapter=${chapter - 1}"><h3>Prev Chapter</h3></a>`;
+const nextLink = `<a href="/?chapter=${chapter + 1}"><h3>Next Chapter</h3></a>`;
 const chapterDisplay = `<h1> Chapter ${chapter} </h1>`;
 const control = `<div class='control'>${prevLink + chapterDisplay + nextLink}</div>`;
 
@@ -39,6 +39,6 @@ if (chapter) {
     url: "/chapter/where"
   })
     .then(chapterNum => {
-      $("#main").append(`<a href="/?chapter=${chapterNum}"><p>Click to go to Chapter ${chapterNum}</p></a>`);
+      $("#main").append(`<div class='where'><a href="/?chapter=${chapterNum}"><p>Go to chapter ${chapterNum}</p></a></div>`);
     });
 }
