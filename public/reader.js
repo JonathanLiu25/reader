@@ -21,6 +21,7 @@ const control = `<div class='control'>${prevLink + chapterDisplay + nextLink}</d
 
 if (chapter) {
   $("#main").append("<div class='loading'><p>Loading...</p></div>");
+  document.title = `Chapter ${chapter} - World of Cultivation`;
   $.ajax({
     type: "GET",
     url: `/chapter/${chapter}`
