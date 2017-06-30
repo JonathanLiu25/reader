@@ -13,29 +13,32 @@ var getUrlParameter = function getUrlParameter(sParam) {
   }
 };
 
-console.log(document.location);
-
-const chapter = parseInt(getUrlParameter("chapter"), 10);
-const prevButton = `<a href="/?chapter=${chapter - 1}"><p>Prev Chapter</p></a>`;
-const nextButton = `<a href="/?chapter=${chapter + 1}"><p>Next Chapter</p></a>`;
-const chapterDisplay = `<p> Chapter ${chapter} </p>`;
-const control = `<div class='control'>${prevButton + chapterDisplay + nextButton}</div>`;
-
-$("#main").append("<div class='loading'><p>Loading...</p></div>");
+const chapter = parseInt(getUrlParameter("chapter"), 10) || null;
+const prevLink = `<a href="/?chapter=${chapter - 1}"><p>Prev Chapter</p></a>`;
+const nextLink = `<a href="/?chapter=${chapter + 1}"><p>Next Chapter</p></a>`;
+const chapterDisplay = `<h1> Chapter ${chapter} </h1>`;
+const control = `<div class='control'>${prevLink + chapterDisplay + nextLink}</div>`;
 
 if (chapter) {
+  $("#main").append("<div class='loading'><p>Loading...</p></div>");
   $.ajax({
     type: "GET",
     url: `/${chapter}`
   })
-    .then(result => {
+    .then(content => {
       $(".loading").remove();
       $("#main").append(control);
-      $("#main").append(result);
+      $("#main").append(content);
       $(".wpcnt").remove();
       $("#jp-post-flair").remove();
       $("#main").append(control);
     });
 } else {
-  $("#main").append("<lp>Type '/?chapter=chapterid' in the url</p>");
+  $.ajax({
+    type: "GET",
+    url: "/where"
+  })
+    .then(chapterNum => {
+      $("#main").append(`<a href="/?chapter=${chapterNum}"><p>Click to go to Chapter ${chapterNum}</p></a>`);
+    });
 }
