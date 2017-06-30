@@ -1,0 +1,26 @@
+body {
+  background-color: lightgray;
+}
+
+p {
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#main {
+  margin: 1% 1%;
+  padding: 1% 5%;
+  background-color: white;
+}
+
+.loading {
+  text-align: center;
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
