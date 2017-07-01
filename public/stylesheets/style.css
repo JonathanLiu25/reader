@@ -43,3 +43,7 @@ p {
 .where p {
   font-size: 50px;
 }
+
+.footer {
+  margin-bottom: 5%;
+}
