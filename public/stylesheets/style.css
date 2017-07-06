@@ -18,8 +18,11 @@ p {
 }
 
 .loading {
-  font-size: 72px;
   text-align: center;
+}
+
+.loading p {
+  font-size: 72px;
 }
 
 .control {
