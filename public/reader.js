@@ -2,8 +2,8 @@ const words = {
   ling: "spirit",
   ye: "grandfather",
   sanren: "roaming cultivator",
-  zhenren: "Spirit Master",
-  xianren: "Daoist immortal",
+  zhenren: "spirit master",
+  xianren: "daoist immortal",
   xiu: "cultivator",
   xiuzhe: "cultivator",
   yaomo: "spirit demon",
@@ -28,7 +28,6 @@ const words = {
   shibo: "senior uncle elder",
   shigu: "senior aunt"
 };
-
 
 const chapter = getChapter() || null;
 const prevLink = `<a href="/?chapter=${chapter - 1}"><h3>Prev Chapter</h3></a>`;
