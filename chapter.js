@@ -1,15 +1,17 @@
 const express = require("express");
 const request = require("request");
 const { JSDOM } = require("jsdom");
+const Chapter = require("./models").Chapter;
 
 const router = express.Router();
 
-let latestChapter = 1;
 let options;
 requestOptions();
 
 router.get("/where", (req, res, next) => {
-  res.send(String(latestChapter));
+  Chapter.findOne({ where: { name: "world-of-cultivation" } })
+    .then(foundChapter => res.send(String(foundChapter.chapter)))
+    .catch(next);
 });
 
 router.get("/options", (req, res, next) => {
@@ -18,7 +20,10 @@ router.get("/options", (req, res, next) => {
 
 router.get("/:chapter", (req, res, next) => {
   const chapter = parseInt(req.params.chapter, 10);
-  latestChapter = chapter;
+
+  Chapter.findOrCreate({ where: { name: "world-of-cultivation" } })
+    .then(foundChapter => foundChapter[0].update({ chapter }))
+    .catch(next);
 
   if (!options) {
     requestOptions(res);
