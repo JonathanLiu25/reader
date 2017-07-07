@@ -26,13 +26,13 @@ router.get("/:chapter", (req, res, next) => {
     .catch(next);
 
   if (!options) {
-    requestOptions(res);
+    requestOptions(res, chapter);
   } else {
     findChapter(res, chapter);
   }
 });
 
-function requestOptions(res) {
+function requestOptions(res, chapter) {
   const toc = "https://wwyxhqc.wordpress.com/%E4%BF%AE%E7%9C%9F%E4%B8%96%E7%95%8C-world-of-cultivation/table-of-contents/";
   request(toc, (tocErr, tocRes, tocBody) => {
     if (tocErr) {
@@ -40,7 +40,7 @@ function requestOptions(res) {
       else console.log("ToC error", tocErr);
     } else {
       options = new JSDOM(tocBody).window.document.getElementsByTagName("option");
-      if (res) res.sendStatus(200);
+      if (chapter) findChapter(res, chapter);
     }
   });
 }
